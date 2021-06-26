@@ -3,7 +3,6 @@ plugins {
     id 'kotlin-android'
 
 }
-apply plugin: "kotlin-android-extensions"
 
 android {
     compileSdkVersion 30
@@ -12,11 +11,10 @@ android {
     defaultConfig {
         applicationId "ru.skillbranch.skillarticles"
         minSdkVersion 23
-        targetSdkVersion 30
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "ru.skillbranch.skillarticles.DexopenerJUnitRunner"
     }
 
     buildTypes {
@@ -32,32 +30,33 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    androidExtensions{
-        experimental = true
+    buildFeatures{
+        viewBinding true
     }
 }
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-
-
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
-    implementation 'com.google.android.material:material:1.4.0-alpha02'
+    implementation 'androidx.fragment:fragment-ktx:1.3.2'
+    implementation 'com.google.android.material:material:1.3.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1'
+    implementation 'androidx.datastore:datastore-preferences:1.0.0-alpha08'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     androidTestImplementation 'androidx.test:core:1.3.0'
     androidTestImplementation 'androidx.test:runner:1.3.0'
     androidTestImplementation 'androidx.test:rules:1.3.0'
-    androidTestImplementation 'com.jraska.livedata:testing-ktx:1.1.1'
+    androidTestImplementation 'com.jraska.livedata:testing-ktx:1.1.2'
     androidTestImplementation 'android.arch.core:core-testing:1.1.1'
+    androidTestImplementation 'io.mockk:mockk-android:1.11.0'
+    androidTestImplementation 'com.github.tmurakami:dexopener:2.0.5'
+
 
 }
